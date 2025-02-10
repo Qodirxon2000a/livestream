@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./home.css";
-import Videos from "../home/UZFOX.mp4";
 
 const FootballStream = () => {
   const [matches, setMatches] = useState([
     { id: 1, teams: "Birinchi Kanal", streamUrl: "custom" }
   ]);
   const [selectedMatch, setSelectedMatch] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (matches.length > 0) {
@@ -17,18 +17,20 @@ const FootballStream = () => {
   return (
     <div className="stream-container">
       <header className="header">
-        <div className="left">
-          <div className="text_left">
-            <h3>UZFOX TV - FUTBOL UCHRASHUVLARI BIZ BILAN SIFATLIROQ!</h3>
-          </div>
-        </div>
+        <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </button>
+        <h3>UZFOX TV - FUTBOL UCHRASHUVLARI BIZ BILAN SIFATLIROQ!</h3>
       </header>
       <div className="content">
-        <aside className="match-list">
+        <aside className={`match-list ${menuOpen ? "open" : ""}`}>
+          <button className="close-button" onClick={() => setMenuOpen(false)}>
+            X
+          </button>
           <h2>Kanallar</h2>
           <ul>
             {matches.map((match) => (
-              <li key={match.id} onClick={() => setSelectedMatch(match)}>
+              <li key={match.id} onClick={() => { setSelectedMatch(match); setMenuOpen(false); }}>
                 {match.teams}
               </li>
             ))}
@@ -39,17 +41,12 @@ const FootballStream = () => {
             selectedMatch.streamUrl === "custom" ? (
               <iframe
                 src="https://livepush.io/embed/emNfF9qCvMOqZuod"
-                width="100%"
-                height="100%"
                 allowFullScreen
                 frameBorder="0"
-                style={{ border: "none" }}
               ></iframe>
             ) : (
               <iframe
-                width="100%"
-                height="100%"
-                src={`${selectedMatch.streamUrl}&autoplay=1&controls=0&disablekb=1&fs=0&modestbranding=1&rel=0&showinfo=0`}
+                src={`${selectedMatch.streamUrl}&autoplay=1&controls=0`}
                 title={selectedMatch.teams}
                 frameBorder="0"
                 allow="autoplay; encrypted-media"
