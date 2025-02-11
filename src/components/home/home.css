@@ -7,7 +7,7 @@
 
 .stream-container {
   font-family: Arial, sans-serif;
-  background-color: #111;
+  background-color: #0d0d0d;
   color: white;
   height: 100vh;
   display: flex;
@@ -16,15 +16,12 @@
 
 /* Header */
 .header {
-  background: #222;
+  background: #1a1a1a;
   padding: 15px;
   display: flex;
   align-items: center;
-}
-
-.left {
-  display: flex;
-  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .menu-button {
@@ -34,6 +31,25 @@
   font-size: 24px;
   cursor: pointer;
   margin-right: 15px;
+  transition: transform 0.3s ease;
+}
+
+.menu-button:hover {
+  transform: scale(1.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff6600;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
 }
 
 /* Content layout */
@@ -50,9 +66,9 @@
   top: 0;
   width: 70%;
   height: 100%;
-  background: #333;
+  background: #222;
   z-index: 1000;
-  padding: 15px;
+  padding: 20px;
   transition: left 0.3s ease-in-out;
 }
 
@@ -71,10 +87,17 @@
   cursor: pointer;
   padding: 5px 10px;
   border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.close-button:hover {
+  background: darkred;
 }
 
 .match-list h2 {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #ff6600;
 }
 
 .match-list ul {
@@ -83,13 +106,15 @@
 }
 
 .match-list li {
-  padding: 10px;
+  padding: 12px;
   cursor: pointer;
   border-bottom: 1px solid #444;
+  transition: background 0.3s;
 }
 
 .match-list li:hover {
   background: #555;
+  color: #ffcc00;
 }
 
 /* Stream View */
@@ -105,6 +130,7 @@
   width: 100%;
   height: 100%;
   border: none;
+  border-radius: 10px;
 }
 
 /* Responsive Design */
@@ -118,13 +144,15 @@
   .close-button {
     display: none;
   }
-  
 }
 
 @media (max-width: 768px) {
-  .left h3{
-    font-size: 10px;
+  .logo img {
+    width: 30px;
+    height: 30px;
   }
-  
-}
 
+  .logo h3 {
+    font-size: 14px;
+  }
+}
