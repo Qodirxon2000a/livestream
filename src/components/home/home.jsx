@@ -1,3 +1,4 @@
+import { MdLiveTv } from "react-icons/md"; // Material Design TV icon
 import React, { useState, useEffect } from "react";
 import "./home.css";
 
@@ -31,10 +32,22 @@ const FootballStream = () => {
           <ul>
             {matches.map((match) => (
               <li key={match.id} onClick={() => { setSelectedMatch(match); setMenuOpen(false); }}>
+                <MdLiveTv style={{ marginRight: "10px", fontSize: "20px" }} />
                 {match.teams}
               </li>
             ))}
           </ul>
+          <br /><br />
+          <div className="chat-container">
+            <h3>Real-Time Chat</h3>
+            <iframe
+              src="https://embedchat.livepush.io/?room=emNfF9qCvMOqZuod"
+              width="100%"
+              height="400px"
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
+          </div>
         </aside>
         <main className="stream-view">
           {selectedMatch ? (
