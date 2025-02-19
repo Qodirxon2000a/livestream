@@ -38,16 +38,7 @@ const FootballStream = () => {
             ))}
           </ul>
           <br /><br />
-          <div className="chat-container">
-            <h3>Real-Time Chat</h3>
-            <iframe
-              src="https://embedchat.livepush.io/?room=emNfF9qCvMOqZuod"
-              width="100%"
-              height="400px"
-              frameBorder="0"
-              allowFullScreen
-            ></iframe>
-          </div>
+         
         </aside>
         <main className="stream-view">
           {selectedMatch ? (
@@ -67,7 +58,7 @@ const FootballStream = () => {
               ></iframe>
             )
           ) : (
-            <p>Matchni tanlang</p>
+            <p></p>
           )}
         </main>
       </div>
